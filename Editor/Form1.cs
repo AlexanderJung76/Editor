@@ -13,7 +13,7 @@ namespace Editor
     public partial class FW_Editor : Form
     {
         private string path = @"c:\test\editor.txt";
-        private bool isSaved = false;
+        private bool isSaved = true;
 
         public FW_Editor()
         {
@@ -108,8 +108,11 @@ namespace Editor
         {
             if (!isSaved)
             {
-                MessageBox.Show("Achtung alle daten werden gelöscht!", "Warnung!!!",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (DialogResult.OK != MessageBox.Show("Achtung alle daten werden gelöscht!", "Warnung!!!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning))
+                {
+                    return;
+                }
             }
             
             try
