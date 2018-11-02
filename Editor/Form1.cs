@@ -13,7 +13,7 @@ namespace Editor
 {
     public partial class FW_Editor : Form
     {
-        private string path = @"c:\test\editor.txt";        //temp path before save dialog implemented
+        private string path = @"c:\test\editor.txt";        //temp path before save dialog setup path again
         private bool isSaved = true;        //bool for overwrite warning dialogs
 
         public FW_Editor()
@@ -42,13 +42,21 @@ namespace Editor
 
         private void MI_Speichern_Click(object sender, EventArgs e)
         {
-            Save();     //selfwritten method
+            try
+            {
+                File.WriteAllLines(path, RTB_Editor.Lines);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             isSaved = true;
         }
 
         private void MI_Speichern_Unter_Click(object sender, EventArgs e)
         {
-            //need code
+            Save();     //selfwritten method
+            isSaved = true;
         }
 
         private void MI_Ausschneiden_Click(object sender, EventArgs e)
@@ -68,7 +76,7 @@ namespace Editor
 
         private void MI_Info_Click(object sender, EventArgs e)
         {
-            //need code
+            
         }
 
         private void TSB_Neu_Click(object sender, EventArgs e)
@@ -95,7 +103,15 @@ namespace Editor
         {
             try
             {
-                File.WriteAllLines(path, RTB_Editor.Lines);
+                SaveFileDialog FD_Save = new SaveFileDialog();
+                FD_Save.Filter = "txt files (*.txt)|*.txt|AllowDrop files (*.*)|*.*";
+                FD_Save.InitialDirectory = @"C:\test\";
+
+                if (DialogResult.OK ==FD_Save.ShowDialog())
+                {
+                    path = FD_Save.FileName;
+                    File.WriteAllLines(path, RTB_Editor.Lines);
+                }                
             }
             catch (Exception e)
             {
@@ -116,7 +132,15 @@ namespace Editor
             
             try
             {
-                RTB_Editor.Lines = File.ReadAllLines(path);
+                OpenFileDialog FD_Open = new OpenFileDialog();
+                FD_Open.Filter = "txt files (*.txt)|*.txt|AllowDrop files (*.*)|*.*";
+                FD_Open.InitialDirectory = @"c:\test\";
+
+                if (DialogResult.OK == FD_Open.ShowDialog())
+                {
+                    path = FD_Open.FileName;
+                    RTB_Editor.Lines = File.ReadAllLines(path);
+                }                
             }
             catch (Exception e)
             {
