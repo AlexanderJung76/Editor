@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FW_Editor));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.MI_Datei = new System.Windows.Forms.ToolStripMenuItem();
+            this.MI_Neu = new System.Windows.Forms.ToolStripMenuItem();
+            this.MI_Öffnen = new System.Windows.Forms.ToolStripMenuItem();
+            this.MI_Speichern = new System.Windows.Forms.ToolStripMenuItem();
             this.MI_Speichern_Unter = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.MI_Beenden = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,20 +46,22 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.RTB_Editor = new System.Windows.Forms.RichTextBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.TSB_Neu = new System.Windows.Forms.ToolStripButton();
             this.TSB_Speichern = new System.Windows.Forms.ToolStripButton();
             this.TSB_Öffnen = new System.Windows.Forms.ToolStripButton();
-            this.MI_Neu = new System.Windows.Forms.ToolStripMenuItem();
-            this.MI_Öffnen = new System.Windows.Forms.ToolStripMenuItem();
-            this.MI_Speichern = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.TSB_Copy = new System.Windows.Forms.ToolStripButton();
+            this.TSB_Paste = new System.Windows.Forms.ToolStripButton();
+            this.TSB_Cut = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -84,24 +89,51 @@
             this.MI_Datei.Size = new System.Drawing.Size(46, 20);
             this.MI_Datei.Text = "Datei";
             // 
+            // MI_Neu
+            // 
+            this.MI_Neu.Image = ((System.Drawing.Image)(resources.GetObject("MI_Neu.Image")));
+            this.MI_Neu.Name = "MI_Neu";
+            this.MI_Neu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.MI_Neu.Size = new System.Drawing.Size(168, 22);
+            this.MI_Neu.Text = "Neu";
+            this.MI_Neu.Click += new System.EventHandler(this.MI_Neu_Click);
+            // 
+            // MI_Öffnen
+            // 
+            this.MI_Öffnen.Image = global::Editor.Properties.Resources.openHS;
+            this.MI_Öffnen.Name = "MI_Öffnen";
+            this.MI_Öffnen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.MI_Öffnen.Size = new System.Drawing.Size(168, 22);
+            this.MI_Öffnen.Text = "Öffnen";
+            this.MI_Öffnen.Click += new System.EventHandler(this.MI_Öffnen_Click);
+            // 
+            // MI_Speichern
+            // 
+            this.MI_Speichern.Image = global::Editor.Properties.Resources.saveHS;
+            this.MI_Speichern.Name = "MI_Speichern";
+            this.MI_Speichern.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.MI_Speichern.Size = new System.Drawing.Size(168, 22);
+            this.MI_Speichern.Text = "Speichern";
+            this.MI_Speichern.Click += new System.EventHandler(this.MI_Speichern_Click);
+            // 
             // MI_Speichern_Unter
             // 
             this.MI_Speichern_Unter.Image = ((System.Drawing.Image)(resources.GetObject("MI_Speichern_Unter.Image")));
             this.MI_Speichern_Unter.Name = "MI_Speichern_Unter";
-            this.MI_Speichern_Unter.Size = new System.Drawing.Size(180, 22);
+            this.MI_Speichern_Unter.Size = new System.Drawing.Size(168, 22);
             this.MI_Speichern_Unter.Text = "Speichern unter...";
             this.MI_Speichern_Unter.Click += new System.EventHandler(this.MI_Speichern_Unter_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(165, 6);
             // 
             // MI_Beenden
             // 
             this.MI_Beenden.Name = "MI_Beenden";
             this.MI_Beenden.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.MI_Beenden.Size = new System.Drawing.Size(180, 22);
+            this.MI_Beenden.Size = new System.Drawing.Size(168, 22);
             this.MI_Beenden.Text = "Beenden";
             this.MI_Beenden.Click += new System.EventHandler(this.MI_Beenden_Click);
             // 
@@ -176,7 +208,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.RTB_Editor);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(750, 354);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(800, 379);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 24);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -187,6 +219,17 @@
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
+            // 
+            // RTB_Editor
+            // 
+            this.RTB_Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RTB_Editor.Location = new System.Drawing.Point(0, 0);
+            this.RTB_Editor.Name = "RTB_Editor";
+            this.RTB_Editor.Size = new System.Drawing.Size(800, 379);
+            this.RTB_Editor.TabIndex = 0;
+            this.RTB_Editor.Text = "";
+            this.RTB_Editor.TextChanged += new System.EventHandler(this.RTB_Editor_TextChanged);
             // 
             // toolStrip1
             // 
@@ -199,16 +242,6 @@
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(81, 25);
             this.toolStrip1.TabIndex = 0;
-            // 
-            // RTB_Editor
-            // 
-            this.RTB_Editor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RTB_Editor.Location = new System.Drawing.Point(0, 0);
-            this.RTB_Editor.Name = "RTB_Editor";
-            this.RTB_Editor.Size = new System.Drawing.Size(750, 354);
-            this.RTB_Editor.TabIndex = 0;
-            this.RTB_Editor.Text = "";
-            this.RTB_Editor.TextChanged += new System.EventHandler(this.RTB_Editor_TextChanged);
             // 
             // TSB_Neu
             // 
@@ -240,32 +273,47 @@
             this.TSB_Öffnen.Text = "&Oeffnen";
             this.TSB_Öffnen.Click += new System.EventHandler(this.TSB_Öffnen_Click);
             // 
-            // MI_Neu
+            // toolStrip2
             // 
-            this.MI_Neu.Image = ((System.Drawing.Image)(resources.GetObject("MI_Neu.Image")));
-            this.MI_Neu.Name = "MI_Neu";
-            this.MI_Neu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.MI_Neu.Size = new System.Drawing.Size(180, 22);
-            this.MI_Neu.Text = "Neu";
-            this.MI_Neu.Click += new System.EventHandler(this.MI_Neu_Click);
+            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSB_Copy,
+            this.TSB_Paste,
+            this.TSB_Cut});
+            this.toolStrip2.Location = new System.Drawing.Point(235, 0);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(112, 25);
+            this.toolStrip2.TabIndex = 1;
             // 
-            // MI_Öffnen
+            // TSB_Copy
             // 
-            this.MI_Öffnen.Image = global::Editor.Properties.Resources.openHS;
-            this.MI_Öffnen.Name = "MI_Öffnen";
-            this.MI_Öffnen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.MI_Öffnen.Size = new System.Drawing.Size(180, 22);
-            this.MI_Öffnen.Text = "Öffnen";
-            this.MI_Öffnen.Click += new System.EventHandler(this.MI_Öffnen_Click);
+            this.TSB_Copy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TSB_Copy.Image = ((System.Drawing.Image)(resources.GetObject("TSB_Copy.Image")));
+            this.TSB_Copy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TSB_Copy.Name = "TSB_Copy";
+            this.TSB_Copy.Size = new System.Drawing.Size(23, 22);
+            this.TSB_Copy.Text = "Kopieren";
+            this.TSB_Copy.Click += new System.EventHandler(this.MI_Kopieren_Click);
             // 
-            // MI_Speichern
+            // TSB_Paste
             // 
-            this.MI_Speichern.Image = global::Editor.Properties.Resources.saveHS;
-            this.MI_Speichern.Name = "MI_Speichern";
-            this.MI_Speichern.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.MI_Speichern.Size = new System.Drawing.Size(180, 22);
-            this.MI_Speichern.Text = "Speichern";
-            this.MI_Speichern.Click += new System.EventHandler(this.MI_Speichern_Click);
+            this.TSB_Paste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TSB_Paste.Image = ((System.Drawing.Image)(resources.GetObject("TSB_Paste.Image")));
+            this.TSB_Paste.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TSB_Paste.Name = "TSB_Paste";
+            this.TSB_Paste.Size = new System.Drawing.Size(23, 22);
+            this.TSB_Paste.Text = "Einfügen";
+            this.TSB_Paste.Click += new System.EventHandler(this.MI_Einfügen_Click);
+            // 
+            // TSB_Cut
+            // 
+            this.TSB_Cut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TSB_Cut.Image = ((System.Drawing.Image)(resources.GetObject("TSB_Cut.Image")));
+            this.TSB_Cut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TSB_Cut.Name = "TSB_Cut";
+            this.TSB_Cut.Size = new System.Drawing.Size(23, 22);
+            this.TSB_Cut.Text = "Ausschneiden";
+            this.TSB_Cut.Click += new System.EventHandler(this.MI_Ausschneiden_Click);
             // 
             // FW_Editor
             // 
@@ -290,6 +338,8 @@
             this.toolStripContainer1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,6 +369,10 @@
         private System.Windows.Forms.ToolStripButton TSB_Neu;
         private System.Windows.Forms.ToolStripButton TSB_Speichern;
         private System.Windows.Forms.ToolStripButton TSB_Öffnen;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton TSB_Copy;
+        private System.Windows.Forms.ToolStripButton TSB_Paste;
+        private System.Windows.Forms.ToolStripButton TSB_Cut;
     }
 }
 

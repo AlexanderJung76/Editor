@@ -13,7 +13,7 @@ namespace Editor
 {
     public partial class FW_Editor : Form
     {
-        private string path = @"c:\test\editor.txt";        //temp path befor save dialog implemented
+        private string path = @"c:\test\editor.txt";        //temp path before save dialog implemented
         private bool isSaved = true;        //bool for overwrite warning dialogs
 
         public FW_Editor()
