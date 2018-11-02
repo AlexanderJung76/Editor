@@ -13,8 +13,10 @@ namespace Editor
 {
     public partial class FW_Editor : Form
     {
-        private string path = @"c:\test\editor.txt";        //temp path before save dialog setup path again
+        private string path = "";        //temp path for Save and OpenFileDialog
         private bool isSaved = true;        //bool for overwrite warning dialogs
+        private bool firstSave = true;      // bool for save method
+
 
         public FW_Editor()
         {
@@ -32,31 +34,37 @@ namespace Editor
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning))
             {
                 RTB_Editor.Clear();     //RTB_Editor = Rich Text Box Edit Window <.> clear - method for RTB
+                firstSave = true;
             }            
         }
 
         private void MI_Öffnen_Click(object sender, EventArgs e)
         {
             Open();     //selfwritten method
+            firstSave = false;
         }
 
         private void MI_Speichern_Click(object sender, EventArgs e)
         {
-            try
+            if (!firstSave)
             {
-                File.WriteAllLines(path, RTB_Editor.Lines);
+                try
+                {
+                    File.WriteAllLines(path, RTB_Editor.Lines);                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                isSaved = true;
+                firstSave = false;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            isSaved = true;
+            else Save();
         }
 
         private void MI_Speichern_Unter_Click(object sender, EventArgs e)
         {
-            Save();     //selfwritten method
-            isSaved = true;
+            Save();     //selfwritten method            
         }
 
         private void MI_Ausschneiden_Click(object sender, EventArgs e)
@@ -76,7 +84,8 @@ namespace Editor
 
         private void MI_Info_Click(object sender, EventArgs e)
         {
-            
+            Form_Info Frm_Info = new Form_Info();
+            Frm_Info.Show();        // open an second info window (Form_Info.cs)
         }
 
         private void TSB_Neu_Click(object sender, EventArgs e)
@@ -111,6 +120,7 @@ namespace Editor
                 {
                     path = FD_Save.FileName;
                     File.WriteAllLines(path, RTB_Editor.Lines);
+                    firstSave = false;
                 }                
             }
             catch (Exception e)

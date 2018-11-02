@@ -94,7 +94,7 @@
             this.MI_Neu.Image = ((System.Drawing.Image)(resources.GetObject("MI_Neu.Image")));
             this.MI_Neu.Name = "MI_Neu";
             this.MI_Neu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.MI_Neu.Size = new System.Drawing.Size(168, 22);
+            this.MI_Neu.Size = new System.Drawing.Size(180, 22);
             this.MI_Neu.Text = "Neu";
             this.MI_Neu.Click += new System.EventHandler(this.MI_Neu_Click);
             // 
@@ -261,7 +261,7 @@
             this.TSB_Speichern.Name = "TSB_Speichern";
             this.TSB_Speichern.Size = new System.Drawing.Size(23, 22);
             this.TSB_Speichern.Text = "&Speichern";
-            this.TSB_Speichern.Click += new System.EventHandler(this.TSB_Speichern_Click);
+            this.TSB_Speichern.Click += new System.EventHandler(this.MI_Speichern_Click);
             // 
             // TSB_Öffnen
             // 
@@ -282,7 +282,7 @@
             this.TSB_Cut});
             this.toolStrip2.Location = new System.Drawing.Point(235, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(112, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(81, 25);
             this.toolStrip2.TabIndex = 1;
             // 
             // TSB_Copy
